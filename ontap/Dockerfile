@@ -18,9 +18,13 @@ RUN apt-get update
 
 RUN apt-get -y install nginx mysql-server vim supervisor openssh-server git
 
-RUN apt-get -y install php5-fpm php5-mysql php-apc php5-imagick php5-imap php5-mcrypt php5-curl php5-cli php5-gd php5-common php-pear curl php5-json
+RUN apt-get -y install php5-fpm php5-mysql php-apc php5-imagick php5-imap php5-mcrypt php5-curl php5-cli php5-gd php5-common php-pear curl php5-json php5-xdebug
 
 RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
+
+RUN echo "xdebug.remote_enable=On" >> /etc/php5/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_autostart=On" >> /etc/php5/fpm/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_connect_back=On" >> /etc/php5/fpm/conf.d/20-xdebug.ini
 
 # this seems to be manually loaded
 RUN php5enmod mcrypt
