@@ -3,10 +3,10 @@ FROM ubuntu:trusty
 MAINTAINER jovani <vojalf@gmail.com>
 
 # so we get the neareset mirror
-RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt precise-security main restricted universe multiverse\n@' /etc/apt/sources.list
-RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt precise-backports main restricted universe multiverse\n@' /etc/apt/sources.list
-RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt precise-updates main restricted universe multiverse\n@' /etc/apt/sources.list
-RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt precise main restricted universe multiverse\n@' /etc/apt/sources.list
+RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse\n@' /etc/apt/sources.list
+RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse\n@' /etc/apt/sources.list
+RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse\n@' /etc/apt/sources.list
+RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse\n@' /etc/apt/sources.list
 
 RUN locale-gen en_US.UTF-8
 ENV LANG       en_US.UTF-8
