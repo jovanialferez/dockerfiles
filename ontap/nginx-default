@@ -30,7 +30,7 @@ server {
     index index.php index.html;
 
     # Make site accessible from http://localhost/
-    server_name www.dev.ontap.com.au;
+    server_name www.dev.ontapcars.com.au;
 
     location / {
         try_files $uri $uri/ /index.php?$args;
@@ -55,7 +55,7 @@ server {
     index index.php index.html;
 
     # Make site accessible from http://localhost/
-    server_name api.dev.ontap.com.au;
+    server_name api.dev.ontapcars.com.au;
 
     location / {
         try_files $uri $uri/ /index.php?$args;
