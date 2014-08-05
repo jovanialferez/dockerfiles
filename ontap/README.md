@@ -2,7 +2,7 @@
 
 ---
 
-1. Update your machine’s /etc/hosts pointing www.dev.ontap.com.au and api.dev.ontap.com.au to you docker VM ip (e.g. 192.168.59.103 if using boot2docker in OS X)
+1. Update your machine’s /etc/hosts pointing www.dev.ontapcars.com.au and api.dev.ontapcars.com.au to you docker VM ip (e.g. 192.168.59.103 if using boot2docker in OS X)
 2. Build the docker image:
 
 	```
@@ -17,16 +17,16 @@
 
 4. While inside the container (a bash shell should be prompted after that docker run command):
 	* Clone repo as /var/www/ontapcars. You may add this container's ssh key to your github account:
-	
+
 	```
 	git clone git@github.com:Bywave/ontapcars.git /var/www/ontapcars
 	```
-	
+
 	* Setup the project:
-	
+
 	```
 	cd /var/www/ontapcars
-	php init	
+	php init
 	composer install
 	chown -R www-data:www-data /var/www
 	```
