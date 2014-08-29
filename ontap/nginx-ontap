@@ -1,21 +1,42 @@
 server {
     listen 80;
 
+    listen 443 ssl;
 
     index index.php index.html;
 
-    # Make site accessible from http://localhost/
     server_name www.dev.ontapcars.com.au;
+
+    # Generate your own crt/key for the config below
+    ssl_certificate /var/www/ssl/nginx.crt;
+    ssl_certificate_key /var/www/ssl/nginx.key;
 
     set $yii_bootstrap "index.php";
 
+    location /admin/ico/ {
+        alias /var/www/admin/web/ico/;
+    }
+
+    location /admin/font/ {
+        alias /var/www/admin/web/font/;
+    }
+
     location /admin/css/ {
-        alias /var/www/frontend/web/css/;
+        alias /var/www/admin/web/css/;
+    }
+
+    location /admin/img/ {
+        alias /var/www/admin/web/img/;
+    }
+
+    location /admin/js/ {
+        alias /var/www/admin/web/js/;
     }
 
     location /admin/assets/ {
-        alias /var/www/frontend/web/assets/;
+        alias /var/www/admin/web/assets/;
     }
+
 
     location /admin {
         root /var/www/frontend/web;
