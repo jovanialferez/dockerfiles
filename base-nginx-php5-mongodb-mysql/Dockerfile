@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-MAINTAINER jovani <jovani@bywave.com.au>
+MAINTAINER jovani <vojalf@gmail.com>
 
 # so we get the neareset mirror
 RUN sed -i '1s@^@deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse\n@' /etc/apt/sources.list
@@ -67,7 +67,7 @@ RUN mkdir -p /override_lib && cp /etc/hosts /var/ && cp /lib/x86_64-linux-gnu/li
 
 EXPOSE 80
 EXPOSE 443
-EXPOSE 3360
+EXPOSE 3306
 EXPOSE 9001
 EXPOSE 22
 
