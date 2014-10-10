@@ -39,7 +39,7 @@ server {
 
 
     location /admin {
-        root /var/www/frontend/web;
+        root /var/www/admin/web;
         try_files $uri $uri/ /admin/$yii_bootstrap?$args;
 
         location ~ \.php$ {
