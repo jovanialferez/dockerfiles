@@ -65,6 +65,7 @@ RUN echo "port=*:9001" >> /etc/supervisor/supervisord.conf
 
 RUN mkdir -p /override_lib && cp /etc/hosts /var/ && cp /lib/x86_64-linux-gnu/libnss_files.so.2 /override_lib && sed -ie 's:/etc/hosts:/var/hosts:g' /override_lib/libnss_files.so.2 && export LD_LIBRARY_PATH=/override_lib
 
+EXPOSE 27017
 EXPOSE 80
 EXPOSE 443
 EXPOSE 3306
