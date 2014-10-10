@@ -22,7 +22,7 @@ RUN \
   apt-get install -y mongodb-org && \
   mkdir -p /data/db
 
-RUN apt-get -y install nginx mysql-server vim supervisor openssh-server git
+RUN apt-get -y install nginx vim supervisor openssh-server git
 
 RUN apt-get -y install php5-fpm php5-mysql php-apc php5-imagick php5-imap php5-mcrypt php5-curl php5-cli php5-gd php5-common php-pear curl php5-json php5-xdebug php5-mongo memcached php5-memcache
 
@@ -44,17 +44,12 @@ RUN mkdir /scripts/
 
 RUN mkdir /var/run/sshd
 
-ADD start-mysqld.sh /scripts/start-mysqld.sh
-ADD create_mysql_admin_user.sh /scripts/create_mysql_admin_user.sh
 ADD run.sh /scripts/run.sh
-
 RUN chmod 755 /scripts/*.sh
 
 ADD nginx-default /etc/nginx/sites-available/default
 ADD nginx.conf /etc/nginx/nginx.conf
-ADD my.cnf /etc/mysql/conf.d/my.cnf
 
-ADD supervisord-mysqld.conf /etc/supervisor/conf.d/supervisord-mysqld.conf
 ADD supervisord-nginx.conf /etc/supervisor/conf.d/supervisord-nginx.conf
 ADD supervisord-sshd.conf /etc/supervisor/conf.d/supervisord-sshd.conf
 ADD supervisord-php.conf /etc/supervisor/conf.d/supervisord-php.conf
@@ -70,7 +65,6 @@ ENV export LD_LIBRARY_PATH /override_lib
 EXPOSE 27017
 EXPOSE 80
 EXPOSE 443
-EXPOSE 3306
 EXPOSE 9001
 EXPOSE 22
 
