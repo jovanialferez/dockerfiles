@@ -1,0 +1,30 @@
+server {
+    listen 80;
+
+    index index.php index.html;
+
+    server_name api.dev.klooma.com;
+
+    set $yii_bootstrap "index.php";
+
+    location / {
+        root /var/www/api/www;
+        try_files $uri $uri/ $yii_bootstrap?$args;
+
+        location ~ \.php$ {
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+
+            include fastcgi_params;
+
+            set $fsn /$yii_bootstrap;
+            if (-f $document_root$fastcgi_script_name){
+                set $fsn $fastcgi_script_name;
+            }
+
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $document_root$fsn;
+            fastcgi_index index.php;
+        }
+    }
+}
