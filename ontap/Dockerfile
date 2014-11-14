@@ -1,4 +1,4 @@
-FROM jovani/base-web
+FROM jovani/base
 
 MAINTAINER jovani <jovani@bywave.com.au>
 
@@ -20,6 +20,7 @@ RUN ln -s /etc/nginx/sites-available/ontap /etc/nginx/sites-enabled/ontap
 
 ADD supervisord-beanstalkd.conf /etc/supervisor/conf.d/supervisord-beanstalkd.conf
 
+ENV LD_LIBRARY_PATH /override_lib
 ENV XDEBUG_CONFIG "remote_host=192.168.33.1 remote_port=9000 idekey=PHPSTORM"
 ENV PHP_IDE_CONFIG serverName=www.dev.ontapcars.com.au
 
