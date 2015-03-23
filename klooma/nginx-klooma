@@ -5,9 +5,20 @@ server {
 
     client_max_body_size 256M;
 
+#    location / {
+#        try_files $uri $uri/ /index.php?$args;
+#    }
+
     location / {
-        try_files $uri $uri/ /index.php?$args;
-    }
+            if (-f $request_filename) {
+                expires off;
+                break;
+            }
+            if (!-e $request_filename) {
+                rewrite ^/(.+)$ /index.php?kohana_uri=$1 last;
+                break;
+            }
+    }       
 
     location ~ /(application|modules|system) {
         deny  all;
